@@ -36,9 +36,9 @@ def slack_fmt(slackdataclass):
     for s in slackdataclass:
         json_fmt = dumps(s, cls=DataClass2JSON)
         # this is ugly
-        blocks.append(dumps(clean_json(loads(json_fmt))))
+        blocks.append(clean_json(loads(json_fmt)))
 
-    return blocks
+    return dumps(blocks)
 
 
 
