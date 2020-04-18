@@ -1,6 +1,6 @@
 from dataclasses import asdict, is_dataclass
 from json import JSONEncoder, dumps, loads
-from blocks import Actions, Context, Fields, File, Image, Input, Section
+from blocks import Actions, Context, Divider, File, Image, Input, Section
 from composition import Confirmation, Option, OptionGroup, Text
 from elements import Button, Checkbox, DatePicker, Image
 
@@ -18,31 +18,45 @@ class DataClass2JSON(JSONEncoder):
             return super().default(o)
 
 
-def clean_dict(d):
-   clean = {}
-   for k, v in d.items():
-      if isinstance(v, dict):
-         nested = clean_dict(v)
-         if len(nested.keys()) > 0:
-            clean[k] = nested
-      elif v is not None:
-         clean[k] = v
-   return clean
+def clean_json(value):
+    if isinstance(value, list):
+        return [clean_json(x) for x in value if x is not None]
+    elif isinstance(value, dict):
+        return {
+            key: clean_json(val)
+            for key, val in value.items()
+            if val is not None
+        }
+    else:
+        return value
 
 
 def slack_fmt(slackdataclass):
-    json_fmt = dumps(example, cls=DataClass2JSON)
-    return dumps(clean_dict(loads(json_fmt)))
+    blocks = []
+    for s in slackdataclass:
+        json_fmt = dumps(s, cls=DataClass2JSON)
+        # this is ugly
+        blocks.append(dumps(clean_json(loads(json_fmt))))
+
+    return blocks
 
 
 
-example = Section(
-    text=Text(
-        type='mrkdwn',
-        text='A message',
-    )
-)
+example = [
+    Section(
+        text=Text(
+            type='mrkdwn',
+            text='A message',
+        ),
+        fields=[
+            Text(
+                type='mrkdwn',
+                text='A message',
+            )
+        ]
+    ),
+    Divider()
+]
 
 print(example)
-json_example = dumps(example, cls=DataClass2JSON)
-print(slack_fmt(json_example))
+print(slack_fmt(example))

@@ -12,7 +12,7 @@ class Section:
 
 
 @dataclass
-class Fields:
+class Divider:
     type: str = 'divider'
     block_id: str = None
 
