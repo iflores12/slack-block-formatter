@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from composition import Text
+from .composition import Text
 from typing import List
 
 @dataclass

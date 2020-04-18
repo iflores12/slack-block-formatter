@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from composition import Text, Option, Confirmation
+from .composition import Text, Option, Confirmation
 from typing import List
 
 @dataclass

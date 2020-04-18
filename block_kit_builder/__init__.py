@@ -1,8 +1,8 @@
 from dataclasses import asdict, is_dataclass
 from json import JSONEncoder, dumps, loads
-from blocks import Actions, Context, Divider, File, Image, Input, Section
-from composition import Confirmation, Option, OptionGroup, Text
-from elements import Button, Checkbox, DatePicker, Image
+from .blocks import Actions, Context, Divider, File, Image, Input, Section
+from .composition import Confirmation, Option, OptionGroup, Text
+from .elements import Button, Checkbox, DatePicker, Image
 
 
 class DataClass2JSON(JSONEncoder):
@@ -41,7 +41,7 @@ def slack_fmt(slackdataclass):
     return dumps(blocks)
 
 
-
+'''
 example = [
     Section(
         text=Text(
@@ -60,3 +60,4 @@ example = [
 
 print(example)
 print(slack_fmt(example))
+'''
