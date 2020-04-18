@@ -61,3 +61,7 @@ template = [
 
 slack_block = b.slack_fmt(template)
 ```
+
+
+## Notes
+Not all Elements and Composition components have been created in this library yet as this is still a work in progress. Some might not exist. If so please create an issue.
