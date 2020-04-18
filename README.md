@@ -51,7 +51,6 @@ template = [
             text="*Type:*\nPaid time off\n*When:*\nAug 10-Aug 13\n*Hours:* 16.0 (2 days)\n*Remaining balance:* 32.0 hours (4 days)\n*Comments:* \"Family in town, going camping!\""
         ),
         accessory=b.Image(
-            type="image"
             image_url="https://api.slack.com/img/blocks/bkb_template_images/approvalsNewDevice.png",
             alt_text="computer thumbnail"
         )

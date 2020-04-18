@@ -19,9 +19,9 @@ class Divider:
 
 @dataclass
 class Image:
-    type: str
-    image_url: str
-    alt_text: str
+    type: str = 'image'
+    image_url: str = None
+    alt_text: str = None
     title: str = None
     block_id: str = None
 
