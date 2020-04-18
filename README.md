@@ -3,6 +3,7 @@ Because writing a bunch of nested JSON gets unwieldy in your Slack Bots. This pa
 
 ## Installation
 `git clone git@github.com:iflores12/slack-block-formatter.git`
+
 `pip install -e .`
 
 ## Example
