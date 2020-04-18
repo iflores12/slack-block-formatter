@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from .composition import Text
-from typing import List
+from typing import List, Any
 
 @dataclass
 class Section:
@@ -36,18 +36,18 @@ class Actions:
 @dataclass
 class Context:
     type: str
-    elements: str
+    elements: List[Any]
     block_id: str = None
 
 
 @dataclass
 class Input:
     type: str
-    label: str
-    elements: str
+    label: Text
+    elements: Any
     block_id: str = None
-    hint: str = None
-    optional: str = None
+    hint: Text = None
+    optional: bool = None
 
 
 @dataclass
