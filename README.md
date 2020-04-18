@@ -38,6 +38,8 @@ From a template in the Block Kit Builder:
 You would have to pass in this JSON into your Blocks argument in the message call when using the python slack client. Instead you pass in:
 
 ```
+import block_kit_builder as b
+
 template = [
     b.Section(
         text=b.Text(
