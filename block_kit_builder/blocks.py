@@ -22,7 +22,7 @@ class Image:
     type: str = 'image'
     image_url: str = None
     alt_text: str = None
-    title: str = None
+    title: Text = None
     block_id: str = None
 
 
